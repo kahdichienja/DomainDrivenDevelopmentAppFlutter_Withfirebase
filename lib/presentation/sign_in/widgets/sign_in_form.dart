@@ -18,7 +18,8 @@ class SignInForm extends StatelessWidget {
                         cancelledByUser: (_) => 'Cancelled By User',
                         serverError: (_) => 'Server Error',
                         emailAlreadyInUse: (_) => 'Email Already In Use',
-                        invalidEmailAndPasswordCombination: (_) => 'Invalid Email and Pasword Combination',
+                        invalidEmailAndPasswordCombination: (_) =>
+                            'Invalid Email and Pasword Combination',
                       ),
                       context,
                       duration: 4,
@@ -88,28 +89,34 @@ class SignInForm extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                        child: FlatButton(
-                            onPressed: () {
-                              context.bloc<SignInFormBloc>().add(
-                                  const SignInFormEvent
-                                      .signInWithEmailAndPasswordPressed());
-                            },
-                            child: const Text('SignIn'))),
+                      child: FlatButton(
+                        onPressed: () {
+                          context.bloc<SignInFormBloc>().add(
+                                const SignInFormEvent
+                                    .signInWithEmailAndPasswordPressed(),
+                              );
+                        },
+                        child: const Text('SignIn'),
+                      ),
+                    ),
                     Expanded(
-                        child: FlatButton(
-                            onPressed: () {
-                              context.bloc<SignInFormBloc>().add(
-                                  const SignInFormEvent
-                                      .registerWithEmailAndPasswordPressed());
-                            },
-                            child: const Text('Register')))
+                      child: FlatButton(
+                        onPressed: () {
+                          context.bloc<SignInFormBloc>().add(
+                                const SignInFormEvent
+                                    .registerWithEmailAndPasswordPressed(),
+                              );
+                        },
+                        child: const Text('Register'),
+                      ),
+                    )
                   ],
                 ),
                 RaisedButton(
                   onPressed: () {
-                    context
-                        .bloc<SignInFormBloc>()
-                        .add(const SignInFormEvent.signInWithGooglePressed());
+                    context.bloc<SignInFormBloc>().add(
+                          const SignInFormEvent.signInWithGooglePressed(),
+                        );
                   },
                   color: Colors.blue,
                   child: const Text(
